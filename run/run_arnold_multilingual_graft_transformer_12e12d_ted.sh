@@ -3,6 +3,8 @@
 #            1          2         3         4         5
 # script <dataset> <hdfs-dir> <encoder> <decoder> <suffix>
 
+#test
+
 dataset=$1
 hdfs_dir=$2
 pretrain_encoder_ckpt=$3
