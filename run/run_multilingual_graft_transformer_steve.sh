@@ -20,7 +20,7 @@ lang_list="en,ja"
 
 
 #$CMD ../train.py --num-workers 8 \
-python ../train.py --num-workers 8 \
+python /content/Graformer/train.py --num-workers 8 \
     ../data-bin/parapat.tokenized.ja-en/ \
     --task translation_multi_simple_epoch \
     --langs ${lang_list} --lang-pairs ${lang_pairs} \
