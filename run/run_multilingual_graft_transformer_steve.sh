@@ -21,7 +21,7 @@ lang_list="en,ja"
 
 #$CMD ../train.py --num-workers 8 \
 python /content/Graformer/train.py --num-workers 8 \
-    ../data-bin/parapat.tokenized.ja-en/ \
+    ../content/drive/MyDrive/graformer_drive/small_corpus.tokenized.ja-en \
     --task translation_multi_simple_epoch \
     --langs ${lang_list} --lang-pairs ${lang_pairs} \
     --sampling-method "temperature" --sampling-temperature 5 \
@@ -33,7 +33,8 @@ python /content/Graformer/train.py --num-workers 8 \
     --no-scale-embedding \
     --encoder-normalize-before --decoder-normalize-before \
     --activation-fn gelu \
-    --finetune-from-model ../data-bin/parapat.tokenized.ja-en/encoder_ja_bert_small_finance.pt,../data-bin/parapat.tokenized.ja-en/decoder_en_tiny_gpt2.pt \
+    # --finetune-from-model ../data-bin/parapat.tokenized.ja-en/encoder_ja_bert_small_finance.pt,../data-bin/parapat.tokenized.ja-en/decoder_en_tiny_gpt2.pt \
+    --finetune-from-model ../content/drive/MyDrive/graformer_drive/BERT_JA_small,../data-bin/parapat.tokenized.ja-en/decoder_en_tiny_gpt2.pt \
     --freeze-params "(.embed.)|(.layers\.(0|1|2|3|4|5)\..)|(.layers\.6\.self_attn_layer_norm.)" \
     --transfer-params "encoder.layer_norm.weight:encoder.layers.6.self_attn_layer_norm.weight,decoder.layer_norm.weight:decoder.layers.6.self_attn_layer_norm.weight,encoder.layer_norm.bias:encoder.layers.6.self_attn_layer_norm.bias,decoder.layer_norm.bias:decoder.layers.6.self_attn_layer_norm.bias,decoder.embed_tokens.weight:decoder.lm_output_projection.weight,decoder.layer_norm.weight:decoder.lm_layer_norm.weight,decoder.layer_norm.bias:decoder.lm_layer_norm.bias" \
     --lm-fusion \
